@@ -1,0 +1,36 @@
+class Solution {
+public:
+    void func(vector<int>& nums,int freq[],vector<int>&ds,vector<vector<int>>&v)
+    {
+        if(ds.size()==nums.size())
+        {
+            v.push_back(ds);
+            return;
+        }
+        for(int i=0;i<nums.size();i++)
+        {
+            if(freq[i]==0)
+            {
+                ds.push_back(nums[i]);
+                freq[i]=1;
+                func(nums,freq,ds,v);
+                freq[i]=0;
+                ds.pop_back();
+            }
+        }
+    }
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        int freq[nums.size()];
+        for(int i=0;i<nums.size();i++)
+        {
+            freq[i]=0;
+        }
+        vector<int>ds;
+        vector<vector<int>>v;
+        func(nums,freq,ds,v);
+        return v;
+        
+        
+    }
+};
