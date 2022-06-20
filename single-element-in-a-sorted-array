@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        if(nums.size()==0 )
+        {
+            return 0;
+        }
+        if(nums.size()==1)
+        {
+            return 1;
+        }
+        int i=0;
+        while(i<nums.size())
+        {
+            if(nums[i]!=nums[i+1])
+            {
+                return nums[i];
+            }
+            i=i+2;
+        }
+        return 0;
+    }
+};
